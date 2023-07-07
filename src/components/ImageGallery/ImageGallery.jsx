@@ -20,7 +20,7 @@ export default function ImageGallery({ images }) {
       if (!picture.length) {
         return;
       }
-      setBugPic(picture[0].largeImageURL);
+      setBigPic(picture[0].largeImageURL);
     });
   }, [bigPic, images]);
 
@@ -32,11 +32,13 @@ export default function ImageGallery({ images }) {
     <>
       <ul className={s.gallery} onClick={toggleModal}>
         {images.map(img => {
-          <ImageGalleryItem
-            key={nanoid()}
-            smallImgURL={img.webformatURL}
-            id={img.id}
-          />;
+          return (
+            <ImageGalleryItem
+              key={nanoid()}
+              smallImgURL={img.webformatURL}
+              id={img.id}
+            />
+          );
         })}
       </ul>
       {showModal && bigPic && <Modal onClose={toggleModal} pic={bigPic} />}
