@@ -67,7 +67,7 @@ export default function App() {
   return (
     <>
       <Searchbar onSubmit={processSubmit} />
-      {pictures.length && <ImageGallery images={pictures} />}
+      {!!pictures.length && <ImageGallery images={pictures} />}
       {totalHits > pictures.length && <Button onClick={handleLoadMore} />}
       {status === 'pending' && <Loader />}
       {status === 'rejected' && { error }}
